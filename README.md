@@ -43,10 +43,11 @@ with **Random Forests**, **Gradient Boosting** and **SVC**.
 In the last model (**GPC**), exact posterior inference is not tractable, 
 especially given with size of the dataset. While approximate methods are 
 available, it is left outside the scope of this solution set. I felt it 
-deserved a special mention nonetheless since it particularly suitable for this 
-problem — it is capable of capturing complex dependencies between features
+deserved a special mention nonetheless since it particularly well-suited to 
+this problem — it is capable of capturing complex dependencies between features
 (which is important according to Hint 2), and comes with a principled approach
-feature selection when Automatic Relevance Determination (ARD) kernels are used.
+to feature selection when Automatic Relevance Determination (ARD) kernels are 
+used.
 
 ### **Multi-layer Perceptron**
 
