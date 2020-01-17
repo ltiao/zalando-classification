@@ -4,7 +4,7 @@ notebooks/*
 scripts/*
 datasets/*
 logs/*
-checkpoints/*
+models/*
 
 # Sphinx documentation
 docs/_build/*

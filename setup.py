@@ -31,7 +31,7 @@ setup(
     description="Zalando Classification Task.",
     entry_points={
         'console_scripts': [
-            'zalando_classification=zalando_classification.cli:main',
+            'zalando_classification=zalando_classification.entrypoint:main',
         ],
     },
     install_requires=requirements,
