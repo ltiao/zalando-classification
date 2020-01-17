@@ -1,4 +1,4 @@
-"""Main module."""
+"""Models module."""
 
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, BatchNormalization
