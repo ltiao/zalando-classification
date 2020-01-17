@@ -16,7 +16,7 @@ We’re given a dataset with the following properties:
 
 ## Approach
 
-Before diving into any sophisticated techniques, it’s always a good idea to try out some of the most naive methods one can think of to use as a baseline, like **Naive Bayes (NB)** or **k-Nearest Neighbors (k-NN)**. Thereafter, it’s reasonable to attack the problem with popular methods that have consistently dominated in data science competitions like Kaggle. Some of these include ensemble methods like **Random Forests **and** Gradient Boosting (XGBoost)**. Some other promising approaches include **Multi-layer Perceptrons (MLPs)**, **Support Vector Classification (SVC) **and **Gaussian Process Classification (GPC)**. 
+Before diving into any sophisticated techniques, it’s always a good idea to try out some of the most naive methods one can think of to use as a baseline, like **Naive Bayes (NB)** or **k-Nearest Neighbors (k-NN)**. Thereafter, it’s reasonable to attack the problem with popular methods that have consistently dominated in data science competitions like Kaggle. Some of these include ensemble methods like **Random Forests **and** Gradient Boosting (XGBoost)**. Some other promising approaches include **Multi-layer Perceptrons (MLPs)**, **Support Vector Classification (SVC)** and **Gaussian Process Classification (GPC)**. 
 
 ### Preliminary results
 
@@ -24,7 +24,7 @@ For model evaluation, we first created a hold-out test set  consisting of 20% of
 
 In preliminary analysis (without making significant effort to tune the model hyperparameters), we consistently obtained at best around 55% test accuracy with **Random Forests**, **Gradient Boosting** and **SVC**.
 
-In the last model (**GPC**), exact posterior inference is not tractable, especially given with size of the dataset. While approximate methods are available, it is left outside the scope of this solution set. I felt it deserved a mention nonetheless since it is of particular interest for this problem — it is capable of capturing compex dependencies between features (which is important according to Hint 2), and comes with a principled approach feature selection when Automatic Relevance Determination (ARD) kernels are used.
+In the last model (**GPC**), exact posterior inference is not tractable, especially given with size of the dataset. While approximate methods are available, it is left outside the scope of this solution set. I felt it deserved a mention nonetheless since it is of particular interest for this problem — it is capable of capturing complex dependencies between features (which is important according to Hint 2), and comes with a principled approach feature selection when Automatic Relevance Determination (ARD) kernels are used.
 
 ### **Multi-layer Perceptron**
 
@@ -54,7 +54,7 @@ Cross-validation
 
 ## Credits
 
-The boilerplace for this package was created with [Cookiecutter] and the 
+The boilerplate for this package was created with [Cookiecutter] and the 
 [audreyr/cookiecutter-pypackage] project template.
 
 [Cookiecutter]: https://github.com/audreyr/cookiecutter
