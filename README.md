@@ -69,11 +69,18 @@ error bands* denotes the standard deviation.
 
 ![Results](results-2.hires.png)
 
-We experimented with different data pre-processing methods such as normalization
-and whitening (standardization), but these mostly had deleterious effects on 
-performance. The same was true for regularization methods such as weight decay
-and Dropout, which worsened performance by as much as 10%, and for layer 
-normalization techniques such as Batch Normalization.
+While varying the optimizers and their parameters didn't have a significant 
+impact on final performance (all eventually converge to around 94%), some 
+settings resulting in faster convergence than others. In particular, one can
+observe that Adam with *beta1=0.5* converges faster than RMSProp, which in turn
+converges faster than Adam with *beta1=0.9* (the default in practically all 
+deep learning libraries).
+
+We also experimented with different data pre-processing methods such as 
+normalization and whitening (standardization), but these mostly had deleterious 
+effects on performance. The same was true for regularization methods such as 
+weight decay and Dropout, and also for layer normalization techniques such as 
+Batch normalization, which worsened performance by as much as 10%.
 
 ## Usage
 
