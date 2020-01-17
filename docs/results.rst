@@ -15,13 +15,9 @@ Results
 
     from zalando_classification.utils import make_plot_data
 
-.. plot::
-   :context: close-figs
-   :include-source:
-
     summary_dir = "../logs"
 
-    names = ["default", "adam", "adam-beta-0.5"]
+    names = ["rmsprop", "adam", "adam-beta-0.5"]
     pretty_names = ["RMSProp", r"Adam ($\beta_1=0.9$)", r"Adam ($\beta_1=0.5$)"]
     pretty_name_mapping = dict(zip(names, pretty_names))
 
@@ -33,5 +29,5 @@ Results
     g = sns.relplot(x="epoch", y="accuracy", hue="name",
                     row="partition", ci="sd",
                     height=5, aspect=golden_ratio,
-                    data=new_data, kind="line")
+                    data=data, kind="line")
     g.set(yscale="log")

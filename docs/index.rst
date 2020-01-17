@@ -5,8 +5,8 @@ Documentation for Zalando classification task
    :maxdepth: 2
    :caption: Contents:
 
-   readme
    results
+   modules
    authors
 
 Indices and tables
