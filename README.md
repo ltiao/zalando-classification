@@ -74,10 +74,10 @@ $ git clone https://github.com/ltiao/zalando-classification.git
 The datasets are tracked using text pointers with [Git Large File Storage (LFS)](https://git-lfs.github.com/).
 It is recommended that this be installed prior to cloning.
 
-### Getting Started
+### Getting started
 
-The quickest way to get started is by running a Docker container from the root 
-of the repo.
+The quickest way to get started is by running the Docker container from the 
+root of the repo.
 
 ```console
 $ docker run -it --rm tiao/zalando-classification --help
@@ -107,6 +107,13 @@ Options:
   --help                          Show this message and exit.
 ```
 
+### GPU Support
+
+Use [Nvidia Container Toolkit](https://github.com/NVIDIA/nvidia-docker/blob/master/README.md#quickstart) to run with Nviia GPU Support. Append option `--gpus all` to
+the `docker run` command.
+
+### Reproducing results from pre-trained model
+
 To reproduce results with pre-trained model, run the following (from the 
 directory containing the `datasets/` and `models/` directories):
 
@@ -118,6 +125,43 @@ $ docker run --gpus all -it --rm -v "$PWD/datasets":/usr/src/app/datasets -v "$P
 [Split 1] test accuracy: 0.939, test loss 0.173
 333333/333333 [==============================] - 8s 24us/sample - loss: 0.1697 - acc: 0.9398
 [Split 2] test accuracy: 0.940, test loss 0.170
+```
+
+### Train model from scratch
+
+To train new models from scratch:
+
+```console
+$ docker run -it --rm --gpus all -v "$PWD/datasets":/usr/src/app/datasets -v "$PWD/models":/usr/src/app/models -v "$PWD/logs":/usr/src/app/logs tiao/zalando-classification --seed=8888 --split-method=kfold --n-splits=3 new  
+```
+
+You can find model checkpoints in `$PWD/models`, logs of losses and metrics in 
+`$PWD/logs`, both in CSV format and as TensorBoard Summaries. In another 
+terminal window, you can launch TensorBoard at the appropriate log directory, e.g.
+
+```console
+$ tensorboard --logdir=$HOME/logs
+```
+
+Navigate to http://127.0.0.1:6006/ in your browser to see live training 
+summaries updated in real-time:
+
+![TensorBoard](tensorboard.png)
+
+### Compile documentation
+
+To compile documentation (which generates the learning curve plot show above):
+
+```console
+$ docker run -it --rm -v "$PWD/docs":/usr/src/app/docs -v "$PWD/logs":/usr/src/app/logs tiao/zalando-classification make docs
+```
+
+### Docker Build
+
+To build the image from scratch:
+
+```console
+$ make docker-build
 ```
 
 ### Preprocessing
