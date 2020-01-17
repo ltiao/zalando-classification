@@ -145,7 +145,7 @@ $ docker run --gpus all -it --rm -v "$PWD/datasets":/usr/src/app/datasets -v "$P
 To train new models from scratch:
 
 ```console
-$ docker run -it --rm --gpus all -v "$PWD/datasets":/usr/src/app/datasets -v "$PWD/models":/usr/src/app/models -v "$PWD/logs":/usr/src/app/logs tiao/zalando-classification --seed=8888 --split-method=kfold --n-splits=3 new  
+$ docker run -it --rm --gpus all -v "$PWD/datasets":/usr/src/app/datasets -v "$PWD/models":/usr/src/app/models -v "/logs":/usr/src/app/logs tiao/zalando-classification --seed=8888 --split-method=kfold --n-splits=3 new  
 ```
 
 You can find model checkpoints in `$PWD/models`, logs of losses and metrics in 
@@ -153,7 +153,7 @@ You can find model checkpoints in `$PWD/models`, logs of losses and metrics in
 terminal window, you can launch TensorBoard at the appropriate log directory, e.g.
 
 ```console
-$ tensorboard --logdir=$HOME/logs
+$ tensorboard --logdir=$PWd/logs
 ```
 
 Navigate to http://127.0.0.1:6006/ in your browser to see live training 
@@ -163,7 +163,7 @@ summaries updated in real-time:
 
 ### Compile documentation
 
-To compile documentation (which generates the learning curve plot show above):
+To compile documentation (which generates the learning curve plots shown above):
 
 ```console
 $ docker run -it --rm -v "$PWD/docs":/usr/src/app/docs -v "$PWD/logs":/usr/src/app/logs tiao/zalando-classification make docs
