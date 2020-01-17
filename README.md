@@ -61,8 +61,7 @@ approximately 20 mins to train for 50 epochs, and we need to train a separate
 model for each fold, we limit *k* to a modest value of *k=3*.
 
 Across cross-validation folds, with slight variations on hyperparameters such
-as optimizer parameters, we were able to consistently achieve a validation 
-accuracy of around 94% as shown in the learning curve plots below. 
+as optimizer parameters, **we were able to consistently achieve a validation accuracy of around 94%** as shown in the learning curve plots below. 
 The *hue* represents different optimizers/parameters; the top row shows the 
 train accuracy over epochs while the bottom row shows the validation accuracy;
 the *solid lines* denotes the mean accuracy across folds while the *shaded 
