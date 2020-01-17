@@ -2,11 +2,23 @@
 import click
 import os.path
 
+import pandas as pd
+
 from tensorflow.keras.models import load_model
 from tensorflow.keras.regularizers import l1_l2
 from tensorflow.keras.callbacks import CSVLogger, ModelCheckpoint, TensorBoard
 
 from zalando_classification.models import build_model
+
+
+def get_basename(name, split_num):
+
+    return f"{name}.split{split_num:d}"
+
+
+def get_model_filename_fmt(basename):
+
+    return f"{basename}.{{epoch:02d}}.h5"
 
 
 def maybe_load_model(name, split_num, checkpoint_dir, resume_from_epoch,
@@ -66,11 +78,27 @@ def build_callbacks(name, split_num, summary_dir, checkpoint_dir,
     return callbacks
 
 
-def get_basename(name, split_num):
+def make_plot_data(names, splits, summary_dir, pretty_name_mapping=None):
 
-    return f"{name}.split{split_num:d}"
+    df_list = []
 
+    for name in names:
+        for split_num in splits:
 
-def get_model_filename_fmt(basename):
+            basename = get_basename(name, split_num)
+            csv_path = os.path.join(summary_dir, f"{basename}.csv")
 
-    return f"{basename}.{{epoch:02d}}.h5"
+            df = pd.read_csv(csv_path).assign(name=name, split=split_num)
+            df_list.append(df)
+
+    data = pd.concat(df_list, axis="index", sort=True) \
+             .rename(columns=dict(acc="train", val_acc="validation"))
+
+    if pretty_name_mapping is not None:
+        data = data.assign(name=data.name.replace(pretty_name_mapping))
+
+    wide_data = pd.melt(data, id_vars=["name", "split", "epoch"],
+                        value_vars=["train", "validation"],
+                        value_name="accuracy", var_name="partition")
+
+    return wide_data

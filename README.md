@@ -99,7 +99,7 @@ The quickest way to get started is by running the Docker container from the
 root of the repo.
 
 ```console
-$ docker run -it --rm tiao/zalando-classification --help
+$ docker run -it --rm tiao/zalando-classification zalando_classification --help
 Usage: zalando_classification [OPTIONS] NAME
 
 Options:
@@ -137,7 +137,7 @@ To reproduce results with pre-trained model, run the following (from the
 directory containing the `datasets/` and `models/` directories):
 
 ```console
-$ docker run --gpus all -it --rm -v "$PWD/datasets":/usr/src/app/datasets -v "$PWD/models":/usr/src/app/models tiao/zalando-classification --seed=8888 --split-method=kfold --n-splits=3 --evaluate-only --resume-from-epoch=50 rmsprop
+$ docker run --gpus all -it --rm -v "$PWD/datasets":/usr/src/app/datasets -v "$PWD/models":/usr/src/app/models tiao/zalando-classification zalando_classification --seed=8888 --split-method=kfold --n-splits=3 --evaluate-only --resume-from-epoch=50 rmsprop
 333334/333334 [==============================] - 9s 26us/sample - loss: 0.1589 - acc: 0.9450
 [Split 0] test accuracy: 0.945, test loss 0.159
 333333/333333 [==============================] - 8s 23us/sample - loss: 0.1727 - acc: 0.9387
@@ -151,7 +151,7 @@ $ docker run --gpus all -it --rm -v "$PWD/datasets":/usr/src/app/datasets -v "$P
 To train new models from scratch:
 
 ```console
-$ docker run -it --rm --gpus all -v "$PWD/datasets":/usr/src/app/datasets -v "$PWD/models":/usr/src/app/models -v "/logs":/usr/src/app/logs tiao/zalando-classification --seed=8888 --split-method=kfold --n-splits=3 new  
+$ docker run -it --rm --gpus all -v "$PWD/datasets":/usr/src/app/datasets -v "$PWD/models":/usr/src/app/models -v "/logs":/usr/src/app/logs tiao/zalando-classification zalando_classification --seed=8888 --split-method=kfold --n-splits=3 new  
 ```
 
 You can find model checkpoints in `$PWD/models`, logs of losses and metrics in 
