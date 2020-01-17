@@ -1,0 +1,10 @@
+# These should all be mounted at runtime rather than being included in the
+# build context
+notebooks/*
+scripts/*
+datasets/*
+logs/*
+checkpoints/*
+
+# Sphinx documentation
+docs/_build/*
