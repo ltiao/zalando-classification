@@ -36,7 +36,7 @@ since each model takes approximately 20 mins to train for 50 epochs, and we need
 
 the *solid lines* denotes the mean accuracy across folds while the *shaded error bands* denotes the standard deviation.
 
-[Results](results-2.hires.png)
+![Results](results-2.hires.png)
 
 ### Preprocessing
 
