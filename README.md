@@ -63,6 +63,63 @@ error bands* denotes the standard deviation.
 
 ![Results](results-2.hires.png)
 
+## Usage
+
+Clone this repository:
+
+```
+$ git clone https://github.com/ltiao/zalando-classification.git
+```
+
+The datasets are tracked using text pointers with [Git Large File Storage (LFS)](https://git-lfs.github.com/).
+It is recommended that this be installed prior to cloning.
+
+### Getting Started
+
+The quickest way to get started is by running a Docker container from the root 
+of the repo.
+
+```console
+$ docker run -it --rm tiao/zalando-classification --help
+Usage: zalando_classification [OPTIONS] NAME
+
+Options:
+  --optimizer TEXT
+  -e, --epochs INTEGER            Number of epochs.
+  -b, --batch-size INTEGER        Batch size.
+  --evaluate-only                 Skip model fitting. Only evaluate model.
+  --resume-from-epoch INTEGER     Epoch at which to resume a previous training
+                                  run
+  --l1-factor FLOAT               L1 regularization factor.
+  --l2-factor FLOAT               L2 regularization factor.
+  --batch-norm / --no-batch-norm  Use Batch Normalization (after activation).
+  --standardize
+  --split-method [kfold|shuffle]  Method for generating train/test dataset
+                                  splits.
+  --n-splits INTEGER              Number of train/test dataset splits.
+  --test-size FLOAT               Test set size (for shuffle split method
+                                  only).
+  --checkpoint-dir DIRECTORY      Model checkpoint directory.
+  --checkpoint-period INTEGER     Interval (number of epochs) between
+                                  checkpoints.
+  --summary-dir DIRECTORY         Summary directory.
+  -s, --seed INTEGER              Random seed
+  --help                          Show this message and exit.
+```
+
+To reproduce results with pre-trained model, run the following (from the 
+directory containing the `datasets/` and `models/` directories):
+
+```console
+$ docker run --gpus all -it --rm -v "$PWD/datasets":/usr/src/app/datasets -v "$PWD/models":/usr/src/app/models tiao/zalando-classification --seed=8888 --split-method=kfold --n-splits=3 --evaluate-only --resume-from-epoch=50 rmsprop
+333334/333334 [==============================] - 9s 26us/sample - loss: 0.1589 - acc: 0.9450
+[Split 0] test accuracy: 0.945, test loss 0.159
+333333/333333 [==============================] - 8s 23us/sample - loss: 0.1727 - acc: 0.9387
+[Split 1] test accuracy: 0.939, test loss 0.173
+333333/333333 [==============================] - 8s 24us/sample - loss: 0.1697 - acc: 0.9398
+[Split 2] test accuracy: 0.940, test loss 0.170
+```
+
 ### Preprocessing
 
 * Whitening
