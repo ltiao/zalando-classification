@@ -109,7 +109,7 @@ Options:
 
 ### GPU Support
 
-Use [Nvidia Container Toolkit](https://github.com/NVIDIA/nvidia-docker/blob/master/README.md#quickstart) to run with Nviia GPU Support. Append option `--gpus all` to
+Use [Nvidia Container Toolkit](https://github.com/NVIDIA/nvidia-docker/blob/master/README.md#quickstart) to run with Nvidia GPU Support. Append option `--gpus all` to
 the `docker run` command.
 
 ### Reproducing results from pre-trained model
@@ -163,20 +163,6 @@ To build the image from scratch:
 ```console
 $ make docker-build
 ```
-
-### Preprocessing
-
-* Whitening
-
-### **Feature Selection**
-
-## Metrics
-
-Cross-validation
-
-* Accuracy
-* ROC Curve
-* Confusion matrix
 
 ## Credits
 
