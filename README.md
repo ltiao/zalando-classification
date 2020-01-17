@@ -52,7 +52,7 @@ used.
 ### **Multi-layer Perceptron**
 
 We obtained decent results with Multi-layer Perceptions (MLPs). In particular, 
-we considered a simple family of MLPs with "rectangular-shapes" (number 
+we considered a simple family of MLPs with "rectangular shapes" (number 
 of hidden units are constant across all hidden layers). We primarily 
 experimented with 2 hidden layers each with 64 hidden units, and ReLU 
 activations.
