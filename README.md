@@ -1,4 +1,4 @@
-# Zalando Coding Exercise
+# Zalando Classification Task
 
 ## Problem Description
 
@@ -43,25 +43,38 @@ with **Random Forests**, **Gradient Boosting** and **SVC**.
 In the last model (**GPC**), exact posterior inference is not tractable, 
 especially given with size of the dataset. While approximate methods are 
 available, it is left outside the scope of this solution set. I felt it 
-deserved a special mention nonetheless since it is of particular interest for 
-this problem — it is capable of capturing complex dependencies between features
+deserved a special mention nonetheless since it particularly suitable for this 
+problem — it is capable of capturing complex dependencies between features
 (which is important according to Hint 2), and comes with a principled approach
 feature selection when Automatic Relevance Determination (ARD) kernels are used.
 
 ### **Multi-layer Perceptron**
 
-Multi-layer Perception with two hidden layers and a “rectangular-shape” (number 
-of hidden units are constant across all hidden layers).
+We obtained decent results with Multi-layer Perceptions (MLPs). In particular, 
+we considered a simple family of MLPs with "rectangular-shapes" (number 
+of hidden units are constant across all hidden layers). We primarily 
+experimented with 2 hidden layers each with 64 hidden units, and ReLU 
+activations.
 
-*k*-fold cross-validation with *k=3*
+We assessed our model with *k*-fold cross-validation. Since each model takes 
+approximately 20 mins to train for 50 epochs, and we need to train a separate 
+model for each fold, we limit *k* to a modest value of *k=3*.
 
-since each model takes approximately 20 mins to train for 50 epochs, and we 
-need to train a separate model for each fold, we limit k to a modest value k=3
-
+Across cross-validation folds, with slight variations on hyperparameters such
+as optimizer parameters, we were able to consistently achieve a validation 
+accuracy of around 94% as shown in the learning curve plots below. 
+The *hue* represents different optimizers/parameters; the top row shows the 
+train accuracy over epochs while the bottom row shows the validation accuracy;
 the *solid lines* denotes the mean accuracy across folds while the *shaded 
 error bands* denotes the standard deviation.
 
 ![Results](results-2.hires.png)
+
+We experimented with different data pre-processing methods such as normalization
+and whitening (standardization), but these mostly had deleterious effects on 
+performance. The same was true for regularization methods such as weight decay
+and Dropout, which worsened performance by as much as 10%, and for layer 
+normalization techniques such as Batch Normalization.
 
 ## Usage
 
