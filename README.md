@@ -95,8 +95,8 @@ It is recommended that this be installed prior to cloning.
 
 ### Getting started
 
-The quickest way to get started is by running the Docker container from the 
-root of the repo.
+The quickest way to get started is by running the Docker container with Docker 
+image [tiao/zalando-classification](https://hub.docker.com/repository/docker/tiao/zalando-classification):
 
 ```console
 $ docker run -it --rm tiao/zalando-classification zalando_classification --help
