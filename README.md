@@ -72,7 +72,7 @@ error bands* denotes the standard deviation.
 
 While varying the optimizers and their parameters didn't have a significant 
 impact on final performance (all eventually converge to around 94%), some 
-settings resulting in faster convergence than others. In particular, one can
+settings resulted in faster convergence than others. In particular, one can
 observe that Adam with *beta1=0.5* converges faster than RMSProp, which in turn
 converges faster than Adam with *beta1=0.9* (the default in practically all 
 deep learning libraries).
